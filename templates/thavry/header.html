@@ -1,0 +1,166 @@
+<!-- this template designed by Amoogli team -->
+<!---www.amoogli.com-->
+<!-- we update every month-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, i
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="/static/{{template_name}}/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    
+    <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/bootsnav.css">
+    <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/overwrite.css">
+    <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/color.css">
+    <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/overwrite.css">
+    <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/style.css">
+
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Nova+Flat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    
+     <!-- jQuery -->
+    <script src="/static/{{template_name}}/js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/static/{{template_name}}/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/{{template_name}}/js/bootsnav.js"></script>
+    {% if page_name == 'home' %}
+        <title>Cambodian travel blogger and woman in busines</title>
+        <meta name="description" content="Cambodian girl who dream to travel around the world and share her experiences. Fight for equality, gender and culture norms">
+        <meta name="keywords" content="Cambodian girl who dream to travel around the world and share her experiences. Fight for equality, gender and culture norms">
+    {% elif page_name == 'single' %}
+        {%for post in post_object%}
+            <title>{{post.title}} | Thavry.com</title>
+            <meta name="description" content="Cambodian girl who dream to travel around the world and share her experiences. Fight for equality, gender and culture norms,{{post.title}}">
+            <meta name="keywords" content="{{post.title}},leadership cambodia">
+        {%endfor%}
+    {% elif page_name == 'category' %}
+        <title>{{category_name}}| Thavry.com</title>
+        <meta name="description" content="{{category_name}}, Cambodian girl who dream to travel around the world and share her experiences. Fight for equality, gender and culture norms">
+        <meta name="keywords" content="{{category_name}}, Cambodian girl who dream to travel around the world and share her experiences. Fight for equality, gender and culture norms">
+    {% elif page_name == 'page' %}
+        {%for page in page_object%}
+            <title>{{page.title}}| Thavry.com</title>
+            <meta name="description" content="{{page.title}}, Cambodian girl who dream to travel around the world and share her experiences. Fight for equality, gender and culture norms">
+            <meta name="keywords" content="{{page.title}}Cambodian girl who dream to travel around the world and share her experiences. Fight for equality, gender and culture norms">
+        {%endfor%}
+    {% elif page_name == 'location' %}
+        {%for location in location_object%}
+            <title>{{location.title}}| Thavry.com  </title>
+            <meta name="description" content="{{location.title}}, Cambodian girl who dream to travel around the world and share her experiences. Fight for equality, gender and culture norms">
+            <meta name="keywords" content="{{location.title}},Cambodian girl who dream to travel around the world and share her experiences. Fight for equality, gender and culture norms">
+        {%endfor%}
+    {% elif page_name == 'event' %}
+        {%for event in event_object%}
+            <title>{{event.title}}| Thavry.com </title>
+            <meta name="description" content="{{event.title}}, Cambodian girl who dream to travel around the world and share her experiences. Fight for equality, gender and culture norms">
+            <meta name="keywords" content="{{event.title}}, Cambodian girl who dream to travel around the world and share her experiences. Fight for equality, gender and culture norms">
+        {%endfor%}
+    {% endif %}
+
+
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=108359626268164";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/slider-pro.min.css" media="screen"/>
+<script type="text/javascript" src="/static/{{template_name}}/js/jquery.sliderPro.min.js"></script>
+ <script type="text/javascript">
+    $( document ).ready(function( $ ) {
+        $( '#example3' ).sliderPro({
+            width: 960,
+            height: 800,
+            fade: true,
+            arrows: true,
+            buttons: false,
+            fullScreen: true,
+            shuffle: true,
+            smallSize: 500,
+            mediumSize: 1000,
+            largeSize: 3000,
+            thumbnailArrows: true,
+            autoplay: true
+        });
+    });
+    </script>
+
+
+</head>
+
+<body>
+<!--nav-->
+<nav class="navbar navbar-default bootsnav">
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <form class="form-horizontal" action="/search" method="GET" id="frm" enctype="multipart/form-data">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control" placeholder="Search" name="q" required="">
+                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+    <div class="container">   
+        <!-- Start Atribute Navigation -->
+        <div class="attr-nav">
+            <ul>
+                <li class="search"><a href=""><i class="fa fa-search"></i></a></li>
+            </ul>
+        </div>        
+        <!-- End Atribute Navigation -->   
+        <!-- Start Header Navigation -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                <i class="fa fa-bars"></i>
+            </button>
+            <!-- <a class="navbar-brand" href="index.html"><img src="/static/{{template_name}}/imgs/logo.png" class="logo" alt=""></a> -->
+        </div>
+        <!-- End Header Navigation -->
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-menu">
+            <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                <li><a href="/">HOME</a></li>
+                <li><a href="/about-me">ABOUT ME</a></li>
+                <li><a href="/books">BOOKS</a></li>
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="/blog" >BLOG</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/educational-travel">Educational Travel</a></li>
+                        <li><a href="/personal-experience">Personal Experience</a></li>
+                        <li><a href="/traveling-tips">Traveling & Tips</a></li>
+                        <li><a href="/cambodia">Cambodia</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" >Travel</a>
+                    <ul class="dropdown-menu">
+                      {%for category in categories%}  
+                        <li><a href="/{{category.slug}}">{{category.name}}</a></li>
+                    {%endfor%} 
+                    </ul>
+                </li>
+                <li><a href="/contact-me">CONTACT ME</a></li>
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div>   
+</nav>
+<!--end nav
