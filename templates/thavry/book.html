@@ -1,0 +1,104 @@
+{% include template_name+'/header.html' %} 
+
+<!--end nav-->
+    <div class="container" style="margin-top:10px;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <img src="/static/{{template_name}}/imgs/banner.png" class="banner img-responsive">
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:15px;">
+            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 ">
+                <img src="/static/{{template_name}}/imgs/front-cover.jpg" class="img-responsive">
+            </div>
+
+            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 ">
+                <div class="box-panel panel panel-default "> 
+                    <h4 class="title">Get a FREE chapter to kickstart your free range adventure! </h4>
+                    <p>Enter your email below and we'll send it to your inbox right away:</p>
+                    <form action="/request-trail/add/" method="POST"  enctype="multipart/form-data">
+                    <div class="col-xs-12 col-sm-12 col-md-12" style="margin:10px 0px;">
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                              {% for message in messages %}
+                                <div class="alert alert-success"> 
+                                  {{ message }}
+                                </div>
+                              {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                      </div>
+                      <div class="form-group">
+                            <input type="text" class="form-control form1" id="name" placeholder="Name" name="name">
+                      </div>
+                      <div class="form-group">
+                            <input type="email" class="form-control form1" id="email" placeholder="Email Address" name="email">
+                      </div>
+                       <div class="form-group">
+                            <textarea  class="form-control form1" id="description" placeholder="Comment" name="comment"></textarea>
+                      </div>
+                      <center><button type="submit" class="btn btn-default btn-sub " style="width:50%; padding:10px;">Submit</button></center>
+                    </form>
+                </div>
+                <img src="/static/{{template_name}}/imgs/thavry-journey-blog-v1.png" class="img-responsive">
+            </div>
+        </div>
+        <div class="row" style="margin-top:15px;">
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+                <a href="/#reviews"><button class="btn btn-default btn-width">Reviews</button></a>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+                <a href="/a-proper-woman/the-book/#the-book"><button class="btn btn-default btn-width">The Book</button></a>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+                <a href="/a-proper-woman/the-author"><button class="btn btn-default btn-width">The Author</button></a>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+                <a href="/a-proper-woman/editor"><button class="btn btn-default btn-width">Editor</button></a>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+                <a href="#"><button class="btn btn-default btn-width">Order</button></a>
+            </div>
+        </div>
+        {%for p in page%}
+        <div class="row" id="about-me">
+            <h5>    
+                <br/>
+                <center>
+                    {{p.title}}
+                </center>
+            </h5>
+        </div>
+        <div class="row" style="padding:15px;">
+                {{p.description|safe}}
+
+        </div>
+        {%endfor%}
+</div>
+
+<!--end content-->
+<div class="col-xs-12" style="height:20px;"></div>
+<footer>
+    <div class="container">
+        <div class="hidden-xs col-sm-4 col-md-4">
+            
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+            <span>
+                <center>
+                    <img src="/static/{{template_name}}/imgs/logo.png" class="logo-footer img-responsive">
+                </center>
+            </span>
+            <center>
+                <label><span><b>Creared by: </b></span><a href="http://www.amoogli.com" target="blank">Amoogli.com</a></label>
+            </center>
+        </div>
+        <div class="hidden-xs col-sm-4 col-md-4">
+            
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

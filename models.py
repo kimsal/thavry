@@ -212,6 +212,35 @@ class Contact(db.Model):
     def delete(contact):
         db.session.delete(contact)
         return db.session.commit()
+class RequestTrail(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name= db.Column(db.String(255),nullable=True,unique=True)
+    slug= db.Column(db.String(255),nullable=True)
+    email = db.Column(db.String(100),nullable=True)
+    comment = db.Column(db.Text,nullable=True)
+    published_at= db.Column(db.TIMESTAMP,server_default=db.func.current_timestamp())
+
+
+    def __str__(self):
+        return self.title
+    def to_Json(self):
+        return dict(id=self.id,
+            name=self.name,
+            email=self.email,
+            comment=self.comment,
+            published_at="{}".format(self.published_at)
+            )
+    def __init__(self, name,email,comment):
+        self.name = name
+        self.slug =slugify(name)
+        self.email=email
+        self.comment = comment
+    def add(request_trail):
+        db.session.add(request_trail)
+        return db.session.commit()
+    def delete(request_trail):
+        db.session.delete(request_trail)
+        return db.session.commit()
 if __name__ == '__main__':
     app.secret_key = SECRET_KEY
     app.config['DEBUG'] = True

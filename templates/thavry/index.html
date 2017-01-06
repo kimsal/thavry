@@ -1,112 +1,250 @@
 {% include template_name+'/header.html' %} 
-<!--content-->
-{%for post in latest_book%}
-<div class="container" style="background-color:#fff; margin-top:10px;">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:5px;">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding:10px;">
-                <img src="{{post.feature_image}}" class="img-responsive" style="width:100%">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding:10px;">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="padding:0px; border:4px solid #27AE60;">
-                    <div style="background-color:#27AE60; height:50px; padding-top:10px; ">
-                        <center>
-                            <h4><b>{{post.title}}</b></h4>
-                        </center>
-                    </div>
-                        <p class="p-index">
-                           {{post.description|striptags|truncate(440)}}
-                        </p>
-                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="margin-right:10px;">
-                            <center>
-                                <h5 class="readmore"> <a href="/{{post.slug}}"> Read More</a></h5>
-                            </center>
-                        </div>
-                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="padding:0px;">
-                            <div style="background-color:#27AE60; height:50px; padding:7px;">
-                                <div class="btn1 btn btn-default"><p id="myBtn" style="padding:1px;"><b> Order Now </b></p></div>
-                                <p class="pay pull-right"><b>Price: ${{post.price}}</b></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+<!--end nav-->
+    <div class="container" style="margin-top:10px;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <img src="/static/{{template_name}}/imgs/banner.png" class="banner img-responsive">
             </div>
         </div>
+         <div class="row col-xs-12 col-sm-12 col-md-12" style="margin:0px;">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  {% for message in messages %}
+                    <div class="alert alert-success"> 
+                      {{ message }}
+                    </div>
+                  {% endfor %}
+                {% endif %}
+            {% endwith %}
+          </div>
+        <div class="row" style="margin-top:15px;">
+            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 ">
+                <img src="/static/{{template_name}}/imgs/front-cover.jpg" class="img-responsive">
+            </div>
+
+            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 ">
+                <div class="box-panel panel panel-default "> 
+                    <h4 class="title">Get a FREE chapter to kickstart your free range adventure! </h4>
+                    <p>Enter your email below and we'll send it to your inbox right away:</p>
+                    <form action="/request-trail/add/" method="POST"  enctype="multipart/form-data">
+                    <div class="col-xs-12 col-sm-12 col-md-12" style="margin:10px 0px;">
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                              {% for message in messages %}
+                                <div class="alert alert-success"> 
+                                  {{ message }}
+                                </div>
+                              {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                      </div>
+                      <div class="form-group">
+                            <input type="text" class="form-control form1" id="name" placeholder="Name" name="name" required="">
+                      </div>
+                      <div class="form-group">
+                            <input type="email" class="form-control form1" id="email" placeholder="Email Address" name="email"  required="">
+                      </div>
+                       <div class="form-group">
+                            <textarea  class="form-control form1" id="description" placeholder="Comment" name="comment"  required=""></textarea>
+                      </div>
+                      <center><button type="submit" class="btn btn-default btn-sub " style="width:50%; padding:10px;">Submit</button></center>
+                    </form>
+                </div>
+                <img src="/static/{{template_name}}/imgs/thavry-journey-blog-v1.png" class="img-responsive">
+            </div>
+        </div>
+        <div class="row" style="margin-top:15px;">
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+                <a href="/#reviews"><button class="btn btn-default btn-width">Reviews</button></a>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+                <a href="/a-proper-woman/the-book"><button class="btn btn-default btn-width">The Book</button></a>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+                <a href="/a-proper-woman/the-author"><button class="btn btn-default btn-width">The Author</button></a>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+                <a href="/a-proper-woman/editor"><button class="btn btn-default btn-width">Editor</button></a>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+                <a href="#"><button class="order btn btn-default btn-width" id="myBtn">Order</button></a>
+            </div>
+        </div>
+        <div class="row" id="reviews">
+            <h5>    
+                <br/>
+                <center>
+                    Reviews
+                </center>
+            </h5>
+        </div>
+        <div class="row" style="padding:15px;">
+            <div class="panel panel-default box">
+                <p class="review">
+                    “A Proper woman shows how important a communication is from generation to generation. And having a dream is the best way that we could go far as far as we want.”
+                </p>
+                <h5 class="name">Thida Prak, Cambodia</h5>
+            </div>
+            <div class="panel panel-default box">
+                <p class="review">
+                    “Each story clicks together very well, and it gives a sense of adventure. Anyway, I had a chance to taste a new form of ideas from "A Proper Woman" yet it's fresh and it's dramatically beautiful.”
+
+                </p>
+                <h5 class="name">Dara Ly, Cambodia 
+                </h5>
+            </div>
+            <div class="panel panel-default box">
+                <p class="review">
+                   “My journey with Thavry was deeply enhanced as I read her story. An inspiring insight bringing hope for a new generation of Cambodian, and young people everywhere. More than “A Proper Woman”-- a remarkable young woman.”
+
+                </p>
+                <h5 class="name">Junette Burke, Australia 
+                </h5>
+            </div>
+            <div class="panel panel-default box">
+                <p class="review">
+                   "Thavry’s story is at times poignant, at times funny, but always enlightening and inspiring. She maps the path for many of this new Cambodian generation to follow and to see that while many traditions are important and should be preserved, others belong only in the past. Thavry has had an interesting life journey so far, and something tells me that she has many more adventures to come."
+
+
+                </p>
+                <h5 class="name"> Iain Donnelly, Scotland 
+
+                </h5>
+            </div>
+            <div class="panel panel-default box">
+                <p class="review">
+                   " A Proper Woman gives a good picture of women’s role in Cambodia. The author describes the societies tradition and history, at the same time as she describes her own place in it. Even if A Proper Woman is about growing up as a women in Cambodia, you can as a woman, from anywhere in the world you may come from, recognize many of the scenarios in the book. In the end, this is a call for questioning of the patriarchate and an inspiration to crush it. If not for yourself, for your future daughter. "
+ 
+
+                </p>
+                <h5 class="name">Malin Annie Jansson, Sweden 
+                </h5>
+            </div>
+            <div class="panel panel-default box">
+                <p class="review">
+                    "A Proper Woman" is a refreshing story that encapsulates the resilience and determination of a woman as she challenges gender inequity. Thavry's journey plants a seed in readers, inspiring them to confront injustice and work diligently towards change.  ”
+
+                </p>
+                <h6 class="name"> Layla Connolly, USA 
+                </h6>
+            </div>
+
+
     </div>
+</div>
+
+
+<!--end content-->
+<div class="col-xs-12" style="height:20px;"></div>
+<footer>
+    <div class="container">
+        <div class="hidden-xs col-sm-4 col-md-4">
+            
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+            <span>
+                <center>
+                    <img src="/static/{{template_name}}/imgs/logo.png" class="logo-footer img-responsive">
+                </center>
+            </span>
+            <center>
+                <label><span><b>Creared by: </b></span><a href="http://www.amoogli.com" target="blank">Amoogli.com</a></label>
+            </center>
+        </div>
+        <div class="hidden-xs col-sm-4 col-md-4">
+            
+        </div>
+    </div>
+</footer>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <div class="modal-header">
-            <span class="close">×</span>
-            <h4><b>A Proper Woman</b></h4>
-        </div>
-        <div class="modal-body madal-body1" style=" margin-top:10px;">
-        <p class="payment">
-            <b>If you wish to purchase the hard copy, we deliver within Cambodia. <br> <br> Please fill out your information below We will contact you by Email or Phone:</b>
-        </p>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <label for="email">First Name:</label>
-                <input type="first-name" class="form-control" id="first-name" placeholder="Input Your First Name*">
-        </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <label for="email">Last Name:</label>
-                <input type="last-name" class="form-control" id="last-name" placeholder="Input Your Last Name*">
-            </div>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top:8px;">
-                <label for="email">Email:</label>
-              <input type="email" class="form-control" id="last-name" placeholder="Input Your Email*">
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top:8px;">
-                <label for="email">Phone Number:</label>
-              <input type="phone-number" class="form-control" id="phone-num" placeholder="Input Your Phone-Number*">
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:20px;">
-            <p class="payment"><b>If you wish to purchase the E-book please make payment below:</b></p>
-                <center>
-                    <a href="https://www.paypal.com/webapps/shoppingcart?xclick_params=Y21kJTNkX3hjbGljayUyNm5vX3NoaXBwaW5nJTNkMSUyNnRheCUzZDAlMjZidXNpbmVzcyUzZHBheXBhbCUyNTQwcmVjeWNsZXMlMmVvcmclMjZpdGVtX25hbWUlM2REb25hdGlvbiUyNmNuJTNkUHVycG9zZSUyNTIwb2YlMjUyMERvbmF0aW9uJTI1MjAlMjUyOE9wdGlvbmFsJTI1MjklMjZjdXJyZW5jeV9jb2RlJTNkVVNEJTI2aXRlbV9udW1iZXIlM2Rkb25hdGlvbiUyNnJldHVybiUzZGh0dHAlMjUzYSUyZiUyZnd3dyUyZXJlY3ljbGVzJTJlb3JnJTI2Y2FuY2VsX3JldHVybiUzZGh0dHAlMjUzYSUyZiUyZnd3dyUyZXJlY3ljbGVzJTJlb3JnJTI2c3VibWl0JTJleCUzZDYxJTI2c3VibWl0JTJleSUzZDE3JTI2JTI2d2FfdHlwZSUzZEJ1eU5vdyUyNg&flowlogging_id=b06240b769a0d#/checkout/openButton">
-                    <img src="/static/{{template_name}}imgs/paypal.png" class="img-responsive"></a>
-                </center>
-        </div>
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">×</span>
+      <h4><b>A Proper Woman</b></h4>
     </div>
+    <div class="modal-body madal-body1" style=" margin-top:10px;">
+    <p class="payment" style="margin-left:12px">
+        <b>If you wish to purchase the hard copy, we deliver within Cambodia. <br> <br> Please fill out your information below We will contact you by Email or Phone:</b>
+    </p>
+    <form action="/add/booking/" method="post">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <label for="">First Name:</label>
+            <input type="text" class="form-control" id="firstname" placeholder="Input Your First Name*" required="" name="firstname">
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <label for="">Last Name:</label>
+            <input type="text" class="form-control" id="lastname" placeholder="Input Your Last Name*" required="" name="lastname">
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <label for="">Email:</label>
+          <input type="email" class="form-control" name="email" id="email" placeholder="Input Your Email*"  required="">
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top:8px;">
+            <label for="">Phone Number:</label>
+          <input type="text" class="form-control" id="phone" placeholder="Input Your phone*"  required="" name="phone">
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top:8px;">
+            <label for="">Amount :</label>
+            <select class="form-control" id="amount" name="amount">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            </select>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top:8px;">
+            <label for="email">Comment:</label>
+          <textarea type="text" class="form-control" id="description" placeholder="Write any comment here " name="description" required="" rows="2"></textarea>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:8px;">
+            <center>
+                <input type="submit" value="Send" class="btn btn-primary" style="width:100px;">
+            </center>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:20px;">
+      </div>
+    </div>
+  </div>
+
 </div>
 
-    <script>
-    // Get the modal
-    var modal = document.getElementById('myModal');
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
 
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks the button, open the modal
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
         modal.style.display = "none";
     }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-    </script>
-</div>
-
-
-<div class="container" style="margin-top:10px; background-color:#fff; padding:15px;">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0px;">   
-      <div class="fb-comments" data-href="http://thavry.com/{{post.slug}}" data-numposts="15"></div>
-    </div>
-</div>
-<br>
-{%endfor%}
-{% include template_name+'/footer.html' %} 
+}
+</script>
+</body>
+</html>

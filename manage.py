@@ -78,6 +78,33 @@ def download(name=''):
                      mimetype='text/csv',
                      attachment_filename=name,
                      as_attachment=True)
+@app.route('/admin/request-trail', methods=['POST', 'GET'])
+@app.route('/admin/request-trail/', methods=['POST', 'GET'])
+@app.route('/admin/request-trail/<pagination>', methods=['POST', 'GET'])
+@app.route('/admin/request-trail/<pagination>/', methods=['POST', 'GET'])
+@auth.login_required
+def request_trail(pagination=1):
+	requests=RequestTrail.query.order_by(RequestTrail.id.desc()).limit(limit).offset(int(int(int(pagination)-1)*limit))
+		
+	pagin=math.ceil((RequestTrail.query.count())/limit)
+	if((RequestTrail.query.count())%limit != 0 ):
+		pagin=int(pagin+1)
+	return render_template("admin/request_trail.html",current_pagin=int(pagination),requests=requests,pagin=int(pagin))
+
+@app.route('/request-trail/<action>', methods=['POST'])
+@app.route('/request-trail/<action>/', methods=['POST'])
+def add_request_trail(action=''):
+	if action=='add':
+		requet_trail = RequestTrail(request.form['name'],request.form['email'],request.form['comment'])
+    	# return str('event')
+    	status = RequestTrail.add(requet_trail)
+        if not status:
+            flash("Request sent was successfully")
+            return redirect(url_for('index'))
+       	else:
+       		flash("Fail to send request !")
+       		return redirect(url_for('index'))
+#########  End request  ######################
 @app.route('/admin/login', methods=['POST', 'GET'])
 @app.route('/admin/login/', methods=['POST', 'GET'])
 def admin_login():
@@ -210,13 +237,29 @@ def admin_booking(pagination=1,action='',name=''):
 ############ Booking ####################
 @app.route('/add/booking/<type_submit>/',methods=['POST'])
 @app.route('/add/booking/<type_submit>',methods=['POST'])
+@app.route('/add/booking/',methods=['POST'])
+@app.route('/add/booking',methods=['POST'])
 def booking(type_submit=''):
 	if type_submit=="":
-		#by form refresh page
-		return 'add and refresh page'
+		try:
+			firstname=request.form['firstname']
+			lastname = request.form['lastname']
+			email=request.form['email']
+			phone=request.form['phone']
+			amount=request.form['amount']
+			post_id=2
+			description=request.form['description']
+			booking=Booking(firstname,lastname,email,phone,post_id,amount,description)
+			status = Booking.add(booking)
+			if not status:
+				flash('Your order sent successfully.')
+				return redirect(url_for('index'))
+			else:
+				flash('Something went wrong. Error in ordering.')
+				return redirect(url_for('index'))
+		except Exception as e:
+			return e.message
 	elif type_submit=="ajax":
-		#by ajax
-		# return str(request.form['json_str']('firstname'))
 		try:
 			data=(request.form['json_str']).replace('"','')
 			data=((data.split('[')[1]).split(']')[0]).split(',')
@@ -226,13 +269,14 @@ def booking(type_submit=''):
 			amount=data[3]
 			post_id=data[4]
 			description=data[5]
-			print description
 			booking=Booking(name,email,phone,post_id,amount,description)
 			status = Booking.add(booking)
 			if not status:
-				return "Your info saved was successfully"
+				flash('Your order sent successfully.')
+				return redirect(url_for('index'))
 			else:
-				return "Fail to add booking !"
+				flash('Something went wrong. Error in ordering.')
+				return redirect(url_for('index'))
 		except Exception as e:
 			return e.message
 ############ End Booking ################
@@ -654,6 +698,11 @@ def index(pagination=1):
 	pagin=math.ceil((Post.query.count())/limit)
 	latest_book = Post.query.join(Category).filter(Category.name=='BOOKS').order_by(Post.id.desc()).limit(1)
 	return render_template(template+'/index.html',latest_book=latest_book,form=form,page_name='home',posts_top=posts_top,home_posts=home_posts,posts_bottom = posts_bottom,pagin=int(pagin),current_pagin=int(pagination))
+@app.route('/a-proper-woman/<slug>')
+@app.route('/a-proper-woman/<slug>/')
+def book(slug=''):
+	page = Page.query.filter_by(slug=slug)
+	return render_template(template+"/book.html",page_object=page,page=page,page_name="page")
 @app.route('/<slug>')
 @app.route('/<slug>/')
 @app.route('/<slug>/<pagination>')

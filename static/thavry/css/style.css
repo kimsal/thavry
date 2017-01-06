@@ -2,7 +2,7 @@ body {
     color: #292929;
     font: 13px/17px 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-family: Helvetica,Arial,sans-serif;
-    background-color: #f4f4f4;
+    background-color: #fff;
 }
 
 h4 {
@@ -16,7 +16,6 @@ h4 {
 h5{
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
-    font-size: 20px;
     margin-bottom: 0px;
     padding: 10px;
 }
@@ -75,6 +74,7 @@ hr {
 }
 .name {
 	color: gray;
+    font-size:18px !important;
 }
 
 /*single*/
@@ -147,7 +147,7 @@ hr {
     height: 50px;
     padding-top: 10px;
 }
-.panel{
+.mypanel{
     border-color: #27AE60;
 }
 .socail{
@@ -438,7 +438,7 @@ nav.navbar.bootsnav .navbar-nav {
     background-color: #27ae60;
     color: #fff;
     border-radius: 0px;
-    margin-left: 10px;
+    margin-left: 0px;
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
 }
@@ -542,3 +542,48 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 
 
 /*end search*/
+
+.box-panel{
+    padding: 15px;
+}
+.form1{
+    height: 40px;
+    margin-top: 10px;
+}
+.review{
+    padding: 15px;
+}
+.name{
+    text-align: -webkit-right;
+}
+.btn-width{
+    background-color: #27ae60;
+    width:100%;
+    padding: 15px 10px;
+    border: 0px;
+    color: #fff;
+    border-radius: 0px;
+}
+.btn-width:hover{
+    background-color: #27ae60;
+    width:100%;
+    padding: 15px 10px;
+    transition: 0.5s;
+
+}
+.btn-sub{
+    background-color: #27ae60;
+    width:100%;
+    padding: 15px 10px;
+    border: 0px;
+    color: #fff;
+    border-radius: 0px;
+}
+.btn-sub:hover{
+    background-color: #27ae60;
+    width:100%;
+    padding: 15px 10px;
+    border: 0px;
+    border-radius: 0px;
+    transition: 0.5s;
+}

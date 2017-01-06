@@ -35,16 +35,15 @@
                 <p class="pull-right; margin-top:20px;">Published: {{post.published_at.strftime("%Y-%m-%d %H:%M")}}</p>
                 <p class="order-text"><b>Price: $ {{post.price}} </b></p>
                 <hr>
-                <p class="quantity"><b>Quantity:</b></p>
-                <input type="text" class="form-control pull-left quantity-num" placeholder="1" style="height:35px; max-width:50%;">
-                <button class="order btn btn-defualt" id="myBtn"><b>Order Now</b></button>
+                  <center>
+                    <button class="order btn btn-defualt" id="myBtn"><b>Order Now</b></button>
+                  </center>
                 </div>
             </div>
         </div>
     </div>
     </div>
 </div>
-
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -56,33 +55,51 @@
       <h4><b>A Proper Woman</b></h4>
     </div>
     <div class="modal-body madal-body1" style=" margin-top:10px;">
-    <p class="payment">
+    <p class="payment" style="margin-left:12px">
         <b>If you wish to purchase the hard copy, we deliver within Cambodia. <br> <br> Please fill out your information below We will contact you by Email or Phone:</b>
     </p>
+    <form action="/add/booking/" method="post">
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <label for="email">First Name:</label>
-            <input type="first-name" class="form-control" id="first-name" placeholder="Input Your First Name*">
+            <label for="">First Name:</label>
+            <input type="text" class="form-control" id="firstname" placeholder="Input Your First Name*" required="" name="firstname">
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <label for="email">Last Name:</label>
-          <input type="last-name" class="form-control" id="last-name" placeholder="Input Your Last Name*">
+            <label for="">Last Name:</label>
+            <input type="text" class="form-control" id="lastname" placeholder="Input Your Last Name*" required="" name="lastname">
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <label for="">Email:</label>
+          <input type="email" class="form-control" name="email" id="email" placeholder="Input Your Email*"  required="">
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top:8px;">
-            <label for="email">Email:</label>
-          <input type="email" class="form-control" id="last-name" placeholder="Input Your Email*">
+            <label for="">Phone Number:</label>
+          <input type="text" class="form-control" id="phone" placeholder="Input Your phone*"  required="" name="phone">
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top:8px;">
-            <label for="email">Phone Number:</label>
-          <input type="phone-number" class="form-control" id="phone-num" placeholder="Input Your Phone-Number*">
+            <label for="">Amount :</label>
+            <select class="form-control" id="amount" name="amount">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            </select>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top:8px;">
+            <label for="email">Comment:</label>
+          <textarea type="text" class="form-control" id="description" placeholder="Write any comment here " name="description" required="" rows="2"></textarea>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:8px;">
+            <center>
+                <input type="submit" value="Send" class="btn btn-primary" style="width:100px;">
+            </center>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:20px;">
-        <p class="payment">
-        <b>If you wish to purchase the E-book please make payment below:</b>
-        </p>
-            <center>
-                <a href="https://www.paypal.com/webapps/shoppingcart?xclick_params=Y21kJTNkX3hjbGljayUyNm5vX3NoaXBwaW5nJTNkMSUyNnRheCUzZDAlMjZidXNpbmVzcyUzZHBheXBhbCUyNTQwcmVjeWNsZXMlMmVvcmclMjZpdGVtX25hbWUlM2REb25hdGlvbiUyNmNuJTNkUHVycG9zZSUyNTIwb2YlMjUyMERvbmF0aW9uJTI1MjAlMjUyOE9wdGlvbmFsJTI1MjklMjZjdXJyZW5jeV9jb2RlJTNkVVNEJTI2aXRlbV9udW1iZXIlM2Rkb25hdGlvbiUyNnJldHVybiUzZGh0dHAlMjUzYSUyZiUyZnd3dyUyZXJlY3ljbGVzJTJlb3JnJTI2Y2FuY2VsX3JldHVybiUzZGh0dHAlMjUzYSUyZiUyZnd3dyUyZXJlY3ljbGVzJTJlb3JnJTI2c3VibWl0JTJleCUzZDYxJTI2c3VibWl0JTJleSUzZDE3JTI2JTI2d2FfdHlwZSUzZEJ1eU5vdyUyNg&flowlogging_id=b06240b769a0d#/checkout/openButton">
-                <img src="/static/{{template_name}}/imgs/paypal.png" class="img-responsive"></a>
-            </center>
       </div>
     </div>
   </div>
@@ -116,11 +133,6 @@ window.onclick = function(event) {
     }
 }
 </script>
-
-
-
-
-
 
         <div class="container" style="margin-top:10px; background-color:#fff; padding:10px;">
              <h5>

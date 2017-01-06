@@ -159,7 +159,7 @@
      {% for booking in bookings %}
      <script type="text/javascript">
       temp=moment().from("{{booking.published_at}}");
-      jqgrid_data.push({"firstname":"{{booking.firstname}}","lastname":"{{booking.lastname}}","published_at":temp,"email":"{{booking.email}}","phone":"{{booking.phone}}","detail":"{{booking.description}}","action":"<a href='/admin/booking/delete/{{booking.name}}' onclick='return confirm(\"Are you sure ?\")' class='btn btn-xs btn-default'><i class='fa fa-trash-o' style='color:red;'></i></a> "});
+      jqgrid_data.push({"firstname":"{{booking.firstname}}","lastname":"{{booking.lastname}}","published_at":temp,"email":"{{booking.email}}","phone":"{{booking.phone}}",'amount':"{{booking.amount}}","detail":"{{booking.description}}","action":"<a href='/admin/booking/delete/{{booking.name}}' onclick='return confirm(\"Are you sure ?\")' class='btn btn-xs btn-default'><i class='fa fa-trash-o' style='color:red;'></i></a> "});
      </script>
      {%endfor%}
 
@@ -170,10 +170,14 @@
         jQuery("#jqgrid").jqGrid({
           data : jqgrid_data,
           datatype : "local",
-          colNames : ['First Name',"Last Name",'Published', 'Email','Phone','Detail','Actions'],
+          colNames : ['First Name',"Last Name",'Published', 'Email','Phone','Amount','Detail','Actions'],
           colModel : [{
-            name : 'name',
-            index : 'name',
+            name : 'firstname',
+            index : 'firstname',
+            editable : false
+          }, {
+           name : 'lastname',
+            index : 'lastname',
             editable : false
           }, {
             name : 'published_at',
@@ -185,6 +189,9 @@
           }, {
             name : 'phone',
             index : 'phone'
+          }, {
+           name : 'amount',
+            index : 'amount'
           }, {
             name : 'detail',
             index : 'detail'
