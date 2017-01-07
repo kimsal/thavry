@@ -1,52 +1,8 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 9.5.5
--- Dumped by pg_dump version 9.5.5
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-SET row_security = off;
-
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
-SET search_path = public, pg_catalog;
-
-SET default_tablespace = '';
-
-SET default_with_oids = false;
-
---
--- Name: alembic_version; Type: TABLE; Schema: public; Owner: blog
---
 
 CREATE TABLE alembic_version (
     version_num character varying(32) NOT NULL
 );
 
-
-ALTER TABLE alembic_version OWNER TO blog;
-
---
--- Name: booking; Type: TABLE; Schema: public; Owner: blog
---
 
 CREATE TABLE booking (
     id integer NOT NULL,
@@ -59,14 +15,6 @@ CREATE TABLE booking (
     published_at timestamp without time zone DEFAULT now(),
     post_id integer
 );
-
-
-ALTER TABLE booking OWNER TO blog;
-
---
--- Name: booking_id_seq; Type: SEQUENCE; Schema: public; Owner: blog
---
-
 CREATE SEQUENCE booking_id_seq
     START WITH 1
     INCREMENT BY 1
@@ -74,19 +22,8 @@ CREATE SEQUENCE booking_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE booking_id_seq OWNER TO blog;
-
---
--- Name: booking_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: blog
---
-
 ALTER SEQUENCE booking_id_seq OWNED BY booking.id;
 
-
---
--- Name: category; Type: TABLE; Schema: public; Owner: blog
---
 
 CREATE TABLE category (
     id integer NOT NULL,
@@ -94,13 +31,6 @@ CREATE TABLE category (
     slug character varying(100),
     is_menu integer
 );
-
-
-ALTER TABLE category OWNER TO blog;
-
---
--- Name: category_id_seq; Type: SEQUENCE; Schema: public; Owner: blog
---
 
 CREATE SEQUENCE category_id_seq
     START WITH 1
@@ -110,18 +40,9 @@ CREATE SEQUENCE category_id_seq
     CACHE 1;
 
 
-ALTER TABLE category_id_seq OWNER TO blog;
-
---
--- Name: category_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: blog
---
 
 ALTER SEQUENCE category_id_seq OWNED BY category.id;
 
-
---
--- Name: page; Type: TABLE; Schema: public; Owner: blog
---
 
 CREATE TABLE page (
     id integer NOT NULL,
@@ -132,13 +53,6 @@ CREATE TABLE page (
     is_menu integer
 );
 
-
-ALTER TABLE page OWNER TO blog;
-
---
--- Name: page_id_seq; Type: SEQUENCE; Schema: public; Owner: blog
---
-
 CREATE SEQUENCE page_id_seq
     START WITH 1
     INCREMENT BY 1
@@ -146,19 +60,8 @@ CREATE SEQUENCE page_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE page_id_seq OWNER TO blog;
-
---
--- Name: page_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: blog
---
-
 ALTER SEQUENCE page_id_seq OWNED BY page.id;
 
-
---
--- Name: post; Type: TABLE; Schema: public; Owner: blog
---
 
 CREATE TABLE post (
     id integer NOT NULL,
@@ -174,13 +77,6 @@ CREATE TABLE post (
     views integer
 );
 
-
-ALTER TABLE post OWNER TO blog;
-
---
--- Name: post_id_seq; Type: SEQUENCE; Schema: public; Owner: blog
---
-
 CREATE SEQUENCE post_id_seq
     START WITH 1
     INCREMENT BY 1
@@ -188,19 +84,8 @@ CREATE SEQUENCE post_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE post_id_seq OWNER TO blog;
-
---
--- Name: post_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: blog
---
-
 ALTER SEQUENCE post_id_seq OWNED BY post.id;
 
-
---
--- Name: request_trail_id_seq; Type: SEQUENCE; Schema: public; Owner: blog
---
 
 CREATE SEQUENCE request_trail_id_seq
     START WITH 1
@@ -209,12 +94,6 @@ CREATE SEQUENCE request_trail_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE request_trail_id_seq OWNER TO blog;
-
---
--- Name: request_trail; Type: TABLE; Schema: public; Owner: blog
---
 
 CREATE TABLE request_trail (
     id integer DEFAULT nextval('request_trail_id_seq'::regclass) NOT NULL,
@@ -226,12 +105,6 @@ CREATE TABLE request_trail (
 );
 
 
-ALTER TABLE request_trail OWNER TO blog;
-
---
--- Name: user_member; Type: TABLE; Schema: public; Owner: blog
---
-
 CREATE TABLE user_member (
     id integer NOT NULL,
     name character varying(50),
@@ -242,12 +115,6 @@ CREATE TABLE user_member (
 );
 
 
-ALTER TABLE user_member OWNER TO blog;
-
---
--- Name: user_member_id_seq; Type: SEQUENCE; Schema: public; Owner: blog
---
-
 CREATE SEQUENCE user_member_id_seq
     START WITH 1
     INCREMENT BY 1
@@ -256,57 +123,24 @@ CREATE SEQUENCE user_member_id_seq
     CACHE 1;
 
 
-ALTER TABLE user_member_id_seq OWNER TO blog;
-
---
--- Name: user_member_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: blog
---
 
 ALTER SEQUENCE user_member_id_seq OWNED BY user_member.id;
 
 
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: blog
---
-
 ALTER TABLE ONLY booking ALTER COLUMN id SET DEFAULT nextval('booking_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: blog
---
 
 ALTER TABLE ONLY category ALTER COLUMN id SET DEFAULT nextval('category_id_seq'::regclass);
 
 
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: blog
---
-
 ALTER TABLE ONLY page ALTER COLUMN id SET DEFAULT nextval('page_id_seq'::regclass);
 
 
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: blog
---
 
 ALTER TABLE ONLY post ALTER COLUMN id SET DEFAULT nextval('post_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: blog
---
 
 ALTER TABLE ONLY user_member ALTER COLUMN id SET DEFAULT nextval('user_member_id_seq'::regclass);
 
 
---
--- Data for Name: alembic_version; Type: TABLE DATA; Schema: public; Owner: blog
---
-
-COPY alembic_version (version_num) FROM stdin;
-98bf17c21d5f
-\.
 
 
 --
