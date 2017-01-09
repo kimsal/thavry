@@ -25,7 +25,7 @@
 
             <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 ">
                 <div class="box-panel panel panel-default "> 
-                    <h4 class="title">Get a FREE chapter to kickstart your free range adventure! </h4>
+                    <h4 class="title">GET THREE FREE CHAPTERS TO KICKSTART A PROPER WOMAN</h4>
                     <p>Enter your email below and we'll send it to your inbox right away:</p>
                     <form action="/request-trail/add/" method="POST"  enctype="multipart/form-data">
                     <div class="col-xs-12 col-sm-12 col-md-12" style="margin:10px 0px;">
@@ -48,6 +48,7 @@
                        <div class="form-group">
                             <textarea  class="form-control form1" id="description" placeholder="Comment" name="comment"  required=""></textarea>
                       </div>
+                      <div class="g-recaptcha" data-sitekey="6LfiBREUAAAAAIuWIZt-bqkQs6bcidm8gMHWyDP2"></div>
                       <center><button type="submit" class="btn btn-default btn-sub " style="width:50%; padding:10px;">Submit</button></center>
                     </form>
                 </div>
@@ -207,8 +208,12 @@
             <label for="email">Comment:</label>
           <textarea type="text" class="form-control" id="description" placeholder="Write any comment here " name="description" required="" rows="2"></textarea>
       </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:8px;">
-            <center>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top:8px;">
+          <div class="g-recaptcha" data-sitekey="6LfiBREUAAAAAIuWIZt-bqkQs6bcidm8gMHWyDP2"></div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top:8px;">
+           <center>
+           <br/>
                 <input type="submit" value="Send" class="btn btn-primary" style="width:100px;">
             </center>
       </div>
@@ -216,6 +221,7 @@
       </div>
     </div>
   </div>
+  </form>
 
 </div>
 
