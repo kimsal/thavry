@@ -10,6 +10,7 @@
             <div id="example3" class="slider-pro">
                 <div class="sp-slides">
                 {%for img in arr_img%}
+                  {%if img !=''%}
                     <div class="sp-slide">
                         <img class="sp-image" src="/static/images/images/{{img}}" 
                             data-src="/static/images/images/{{img}}"
@@ -19,6 +20,7 @@
                             data-retina="/static/images/images/{{img}}"
                             />
                     </div>
+                  {%endif%}
                 {%endfor%}
                 </div>
             </div>
