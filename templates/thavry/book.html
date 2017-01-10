@@ -76,29 +76,4 @@
         </div>
         {%endfor%}
 </div>
-
-<!--end content-->
-<div class="col-xs-12" style="height:20px;"></div>
-<footer>
-    <div class="container">
-        <div class="hidden-xs col-sm-4 col-md-4">
-            
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-4">
-            <span>
-                <center>
-                    <img src="/static/{{template_name}}/imgs/logo.png" class="logo-footer img-responsive">
-                </center>
-            </span>
-            <center>
-                <label><span><b>Creared by: </b></span><a href="http://www.amoogli.com" target="blank">Amoogli.com</a></label>
-            </center>
-        </div>
-        <div class="hidden-xs col-sm-4 col-md-4">
-            
-        </div>
-    </div>
-</footer>
-
-</body>
-</html>
+{% include template_name+'/footer.html' %} 
