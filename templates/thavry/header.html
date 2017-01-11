@@ -3,28 +3,37 @@
 <!-- we update every month-->
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <title></title>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, i
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Bootstrap Core CSS -->
     <link href="/static/{{template_name}}/css/bootstrap.min.css" rel="stylesheet">
+
+     <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Nova+Flat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
+
     <!-- Custom CSS -->
+    
     <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/bootsnav.css">
     <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/overwrite.css">
     <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/color.css">
     <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/overwrite.css">
+
     <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/animate.css">
     <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/style.css">
-    <!-- google font -->
-    <link href="https://fonts.googleapis.com/css?family=Nova+Flat" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/index.css">
     
      <!-- jQuery -->
     <script src="/static/{{template_name}}/js/jquery.js"></script>
@@ -76,7 +85,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/slider-pro.min.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="/static/{{template_name}}//static/{{template_name}}/css/slider-pro.min.css" media="screen"/>
 <script type="text/javascript" src="/static/{{template_name}}/js/jquery.sliderPro.min.js"></script>
  <script type="text/javascript">
     $( document ).ready(function( $ ) {
@@ -103,27 +112,7 @@
 <body>
 <!--nav-->
 <nav class="navbar navbar-default bootsnav">
-    <!-- Start Top Search -->
-    <div class="top-search">
-        <div class="container">
-            <div class="input-group">
-                <form class="form-horizontal" action="/search" method="GET" id="frm" enctype="multipart/form-data">
-                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    <input type="text" class="form-control" placeholder="Search" name="q" required="">
-                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- End Top Search -->
-    <div class="container">   
-        <!-- Start Atribute Navigation -->
-        <div class="attr-nav">
-            <ul>
-                <li class="search"><a href=""><i class="fa fa-search"></i></a></li>
-            </ul>
-        </div>        
-        <!-- End Atribute Navigation -->   
+    <div class="container">    
         <!-- Start Header Navigation -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">

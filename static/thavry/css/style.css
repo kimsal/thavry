@@ -587,3 +587,14 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
     border-radius: 0px;
     transition: 0.5s;
 }
+.partner1{
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+.partner{
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
