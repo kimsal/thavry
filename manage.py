@@ -691,12 +691,12 @@ def page_not_found(e):
 @app.route('/pagin/<pagination>')
 def index(pagination=1):
 	global limit
-	posts_top = Post.query.filter_by(category_id=1).join(UserMember).order_by(Post.id.desc()).limit(6)
-	posts_bottom = Post.query.order_by(Post.id.desc()).limit(3).offset(3)
+	posts_top = Post.query.filter(Post.category_id!=22).join(UserMember).order_by(Post.id.desc()).limit(3)
+	posts_bottom = Post.query.filter(Post.category_id!=22).order_by(Post.id.desc()).limit(3).offset(3)
 	# posts_bottom=Post.query.all()
-	home_posts=Post.query.join(UserMember).order_by(Post.id.desc()).limit(limit).offset(int(int(int(pagination)-1)*limit))
-	pagin=math.ceil((Post.query.count())/limit)
-	latest_book = Post.query.join(Category).filter(Category.name=='BOOKS').order_by(Post.id.desc()).limit(1)
+	home_posts=Post.query.filter(Post.category_id!=22).join(UserMember).order_by(Post.id.desc()).limit(limit).offset(int(int(int(pagination)-1)*limit))
+	pagin=math.ceil((Post.query.filter(Post.category_id!=22).count())/limit)
+	latest_book = Post.query.filter(Post.category_id!=22).join(Category).filter(Category.name=='BOOKS').order_by(Post.id.desc()).limit(1)
 	return render_template(template+'/index.html',latest_book=latest_book,form=form,page_name='home',posts_top=posts_top,home_posts=home_posts,posts_bottom = posts_bottom,pagin=int(pagin),current_pagin=int(pagination))
 @app.route('/a-proper-woman/<slug>')
 @app.route('/a-proper-woman/<slug>/')
@@ -709,10 +709,14 @@ def book(slug=''):
 @app.route('/<slug>/<pagination>/')
 #can be single and category page
 def single(slug='', pagination=1):
-	# session.clear()
-	# return 'd'
 	form=BookingForm()
-	latest_posts= Post.query.order_by(Post.id.desc()).limit(7).offset(0)
+	latest_posts= Post.query.filter(Post.category_id!=22).order_by(Post.id.desc()).limit(7).offset(0)
+	if slug=='blogs':
+		posts=Post.query.filter(Post.category_id!=22).order_by(Post.id.desc()).limit(limit).offset(int(int(int(pagination)-1)*limit))
+		pagin=math.ceil((Post.query.filter(Post.category_id!=22).count())/limit)
+		if(math.ceil(Post.query.filter(Post.category_id!=22).count())%limit != 0 ):
+			pagin=int(pagin+1)
+		return render_template(template+'/category.html',latest_posts=latest_posts,page_name='category',category_slug='blogs',category_name='All Categories',posts=posts,pagin=int(pagin),current_pagin=int(pagination))
 	try:
 		post_object=Post.query.filter_by(slug=slug)#.limit(1)
 		if post_object.count()<=0:
@@ -743,9 +747,9 @@ def single(slug='', pagination=1):
 					category_slug=cat.slug
 				if cat_id == "":
 					abort(404)
-				posts=Post.query.filter_by(category_id=cat_id).order_by(Post.id.desc()).limit(limit).offset(int(int(int(pagination)-1)*limit))
-				pagin=math.ceil((Post.query.filter_by(category_id=cat_id).count())/limit)
-				if(math.ceil(Post.query.filter_by(category_id=cat_id).count())%limit != 0 ):
+				posts=Post.query.filter(Post.category_id!=22).filter_by(category_id=cat_id).order_by(Post.id.desc()).limit(limit).offset(int(int(int(pagination)-1)*limit))
+				pagin=math.ceil((Post.query.filter(Post.category_id!=22).filter_by(category_id=cat_id).count())/limit)
+				if(math.ceil(Post.query.filter(Post.category_id!=22).filter_by(category_id=cat_id).count())%limit != 0 ):
 					pagin=int(pagin+1)
 				#return str(limit)
 				if category_name=='Blog':
@@ -759,7 +763,7 @@ def single(slug='', pagination=1):
 	post_object=Post.query.join(Category,Post.category_id == Category.id).filter(Post.slug==slug)
 	for post in post_object:
 		cat_id=post.category_id
-	related_posts=Post.query.filter_by(category_id=cat_id).order_by(Post.id.desc()).limit(3)
+	related_posts=Post.query.filter(Post.category_id!=22).filter_by(category_id=cat_id).order_by(Post.id.desc()).limit(3)
 	if post_object.first().category.name=="BOOKS":
 		return render_template(template+'/single-book.html',latest_posts=latest_posts, form=form,page_name='single',related_posts=related_posts,post_object=post_object)
 	return render_template(template+'/single.html',latest_posts=latest_posts, form=form,page_name='single',related_posts=related_posts,post_object=post_object)
@@ -778,9 +782,9 @@ def category(slug='',pagination=1):
 		category_slug=cat.slug
 	if cat_id == "":
 		abort(404)
-	posts=Post.query.filter_by(category_id=cat_id).order_by(Post.id.desc()).limit(limit).offset(int(int(int(pagination)-1)*limit))
-	pagin=math.ceil((Post.query.filter_by(category_id=cat_id).count())/limit)
-	if(math.ceil(Post.query.filter_by(category_id=cat_id).count())%limit != 0 ):
+	posts=Post.query.filter(Post.category_id!=22).filter_by(category_id=cat_id).order_by(Post.id.desc()).limit(limit).offset(int(int(int(pagination)-1)*limit))
+	pagin=math.ceil((Post.query.filter(Post.category_id!=22).filter_by(category_id=cat_id).count())/limit)
+	if(math.ceil(Post.query.filter(Post.category_id!=22).filter_by(category_id=cat_id).count())%limit != 0 ):
 		pagin=int(pagin+1)
 	return render_template(template+'/category.html',page_name='category',category_slug=category_slug,category_name=category_name,posts=posts,pagin=int(pagin),current_pagin=int(pagination))
 @app.route('/search', methods=['POST', 'GET'])
@@ -791,10 +795,10 @@ def search():
 	# return search
 	if search=="":
 		return redirect(url_for("index"))
-	query_result=(Post.query.filter((Post.title).match("'%"+search+"%'"),(Post.description).match("%'"+search+"'%"))).count()
-	posts=Post.query.filter((Post.title).match("'%"+search+"%'")).all()#.limit(limit).offset(int(int(int(limit)-1)*limit))
-	pages=Page.query.filter((Page.title).match("'%"+search+"%'")).all()
-	latest_posts= Post.query.order_by(Post.id.desc()).limit(7).offset(0)
+	query_result=(Post.query.filter(Post.category_id!=22).filter((Post.title).match("'%"+search+"%'"),(Post.description).match("%'"+search+"'%"))).count()
+	posts=Post.query.filter(Post.category_id!=22).filter((Post.title).match("'%"+search+"%'")).all()#.limit(limit).offset(int(int(int(limit)-1)*limit))
+	pages=Page.query.filter(Post.category_id!=22).filter((Page.title).match("'%"+search+"%'")).all()
+	latest_posts= Post.query.filter(Post.category_id!=22).order_by(Post.id.desc()).limit(7).offset(0)
 	return render_template(template+"/search.html",latest_posts=latest_posts,pages=pages,search=search,query_result=query_result,posts=posts)
 #end client
 if __name__ == '__main__':

@@ -7,17 +7,7 @@
                 <img src="/static/{{template_name}}/imgs/banner.png" class="banner img-responsive">
             </div>
         </div>
-         <div class="row col-xs-12 col-sm-12 col-md-12" style="margin:0px;">
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                  {% for message in messages %}
-                    <div class="alert alert-success"> 
-                      {{ message }}
-                    </div>
-                  {% endfor %}
-                {% endif %}
-            {% endwith %}
-          </div>
+         
         <div class="row" style="margin-top:15px;">
             <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 ">
                 <img src="/static/{{template_name}}/imgs/front-cover.jpg" class="img-responsive">
@@ -28,7 +18,7 @@
                     <h4 class="title">GET THREE FREE CHAPTERS TO KICKSTART A PROPER WOMAN</h4>
                     <p>Enter your email below and we'll send it to your inbox right away:</p>
                     <form action="/request-trail/add/" method="POST"  enctype="multipart/form-data">
-                    <div class="col-xs-12 col-sm-12 col-md-12" style="margin:10px 0px;">
+                    <div class="col-xs-12 col-sm-12 col-md-12" style="margin:10px 0px;padding:0px;">
                         {% with messages = get_flashed_messages() %}
                             {% if messages %}
                               {% for message in messages %}
@@ -48,7 +38,8 @@
                        <div class="form-group">
                             <textarea  class="form-control form1" id="description" placeholder="Comment" name="comment"  required=""></textarea>
                       </div>
-                      <!-- <div class="g-recaptcha" data-sitekey="6LevDREUAAAAAK17Sp2S079Jw6eukB5DfO9lR114"></div> -->
+                      <div class="g-recaptcha" data-sitekey="6LfFtxEUAAAAAGBm3omMfCFFD2b_7qD9QdxiTj3w"></div>
+           <br/>
                       <center><button type="submit" class="btn btn-default btn-sub " style="width:50%; padding:10px;">Submit</button></center>
                     </form>
                 </div>
@@ -70,8 +61,14 @@
             <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
                 <a href="/a-proper-woman/editor"><button class="btn btn-default btn-width">Editor</button></a>
             </div>
+           
             <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
-                <a href="#"><button class="order btn btn-default btn-width" id="myBtn">Order</button></a>
+                <a href="/a-proper-woman-chapters" target="_blank"><button class="order btn btn-default btn-width" id="">Chapters</button></a>
+            </div>
+             <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+                <a href="https://www.amazon.com/dp/B01NAS5PP4/" target="_blank"><button class="order btn btn-default btn-width" id="">
+                  Buy
+                </button></a>
             </div>
         </div>
         <div class="row" id="reviews">
@@ -132,6 +129,42 @@
                 <h6 class="name"> Layla Connolly, USA 
                 </h6>
             </div>
+
+             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0px;">
+                <h3>
+                  <center>Recent Posts</center>
+                </h3>
+             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0px;">
+        
+        {%for post in posts_top%}
+        <a href="/{{post.slug}}">
+            <div class="col-xs-12 col-sm-4" style=" background-color:#fff; ">
+                <div class="col-xs-12 col-sm-12" style="padding:5px;">
+                    <img src="{{post.feature_image}}" class="img-responsive">
+                </div> 
+                <div class="col-xs-12 col-sm-12" style="padding:5px;">
+                    <a href="/{{post.slug
+                    }}"><h5 class="h5blog-cate">
+                    {{post.title}}
+                    </h5></a>
+                    <p>
+                    {{post.description|striptags|truncate(200)}}
+                    </p>
+                </div>
+            </div>
+        </a>
+        {%endfor%}
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0px;">
+          <center>
+          <br/>
+            <a href="/blogs">
+            <button class="order btn btn-default btn-width" style="width:120px;">
+            More Posts
+        </button></a>
+          </center>
+     </div>
 
 
     </div>

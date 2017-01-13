@@ -12,13 +12,23 @@
             </p>
             <br>
              {%set arr_image=post.images.split('$$$$$')%}
+               <div id="example3" class="slider-pro">
+                <div class="sp-slides">
                 {%for img in arr_image%}
-                 {%if img!=''%}
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        <img src="/static/images/images/{{img}}" class="img-responsive" style="width:100%">
+                  {%if img !=''%}
+                    <div class="sp-slide">
+                        <img class="sp-image" src="/static/images/images/{{img}}" 
+                            data-src="/static/images/images/{{img}}"
+                            data-small="/static/images/images/{{img}}"
+                            data-medium="/static/images/images/{{img}}"
+                            data-large="/static/images/images/{{img}}"
+                            data-retina="/static/images/images/{{img}}"
+                            />
                     </div>
                   {%endif%}
                 {%endfor%}
+                </div>
+            </div>
 
             <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" style="padding:0px;">   
               <div class="fb-comments" data-href="http://thavry.com/{{post.slug}}" data-numposts="15"></div>
