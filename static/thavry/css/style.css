@@ -501,6 +501,9 @@ nav.navbar .navbar-brand img.logo {
     width: 81px;
     margin-top: -4px;
     }
+nav.navbar.bootsnav ul.nav li.dropdown ul.dropdown-menu > li > a{
+    color:white !important;
+}
 }
 
 /*pagination*/
