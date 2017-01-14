@@ -243,7 +243,7 @@
     </script>
 {% for c in cat %}
  <script type="text/javascript">
-   $('input#name').attr('value',"{{c.name|safe}}");  
+   $('input#name').attr('value',"{{c.name.replace('\"','\\"')|safe}}");  
    $('#frm').attr('action','/admin/category/edit/{{c.slug}}/');
  </script>
 {% endfor %}
