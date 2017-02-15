@@ -98,7 +98,9 @@ def add_request_trail(action=''):
 		if 'http://' in request.form['comment']:
 			flash('Something went wrong. Error in ordering.')
 			return redirect(url_for('index'))
-		
+		elif 'mail.ru' in request.form['email']:
+			flash('Something went wrong. Error in ordering.')
+			return redirect(url_for('index'))
 		requet_trail = RequestTrail(request.form['name'],request.form['email'],request.form['comment'])
     	# return str('event')
 
@@ -255,6 +257,9 @@ def booking(type_submit=''):
 			post_id=2
 			description=request.form['description']
 			if 'http://' in description:
+				flash('Something went wrong. Error in ordering.')
+				return redirect(url_for('index'))
+			elif 'mail.ru' in request.form['email']:
 				flash('Something went wrong. Error in ordering.')
 				return redirect(url_for('index'))
 			booking=Booking(firstname,lastname,email,phone,post_id,amount,description)
