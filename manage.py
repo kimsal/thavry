@@ -249,6 +249,9 @@ def booking(type_submit=''):
 			amount=request.form['amount']
 			post_id=2
 			description=request.form['description']
+			if 'http://' in description:
+				flash('Something went wrong. Error in ordering.')
+				return redirect(url_for('index'))
 			booking=Booking(firstname,lastname,email,phone,post_id,amount,description)
 			status = Booking.add(booking)
 			if not status:
