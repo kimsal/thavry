@@ -95,8 +95,13 @@ def request_trail(pagination=1):
 @app.route('/request-trail/<action>/', methods=['POST'])
 def add_request_trail(action=''):
 	if action=='add':
+		if 'http://' in request.form['comment']:
+			flash('Something went wrong. Error in ordering.')
+			return redirect(url_for('index'))
+		
 		requet_trail = RequestTrail(request.form['name'],request.form['email'],request.form['comment'])
     	# return str('event')
+
     	status = RequestTrail.add(requet_trail)
         if not status:
             flash("Request sent was successfully")
