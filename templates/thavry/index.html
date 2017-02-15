@@ -38,9 +38,16 @@
                        <div class="form-group">
                             <textarea  class="form-control form1" id="description" placeholder="Comment" name="comment"  required=""></textarea>
                       </div>
-                      <div class="g-recaptcha" data-sitekey="6LfFtxEUAAAAAGBm3omMfCFFD2b_7qD9QdxiTj3w"></div>
+                      <div class="form-group">
+                        What is the result of 
+                            <b class="num1"></b> <b class="operation"></b> <b class="num2"></b>
+                            <input type="text" class="form-control form1" id="result" placeholder="Result" name="result"  required="">
+                      </div>
+                      <div class="col-xs-12 col-sm-6">
+                         <div class="g-recaptcha" data-sitekey="6LfFtxEUAAAAAGBm3omMfCFFD2b_7qD9QdxiTj3w"></div>
+                          </div>
            <br/>
-                      <center><button type="submit" class="btn btn-default btn-sub " style="width:50%; padding:10px;">Submit</button></center>
+                      <center><button type="submit" class="btn btn-default btn-sub " style="width:50%; padding:10px;" onclick="return check();">Submit</button></center>
                     </form>
                 </div>
                   <a href="/traveling-tips/">
@@ -275,9 +282,9 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
-btn.onclick = function() {
-    modal.style.display = "block";
-}
+// btn.onclick = function() {
+//     modal.style.display = "block";
+// }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
@@ -290,7 +297,36 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+
+var num1=Math.floor(Math.random() * 9) + 1  ;
+var num2=Math.floor(Math.random() * 9) + 1  ;
+var arr_operation=['+','-','*'];
+var operation=arr_operation[Math.floor(Math.random() * 3) + 0]
+$('.num1').html(num1);  
+$('.num2').html(num2);
+$('.operation').html(operation);
+if(operation=='+')
+  var result=num1+num2;
+else if(operation=='-')
+    var result=num1-num2;
+else if(operation=='*')
+    var result=num1*num2;
+// alert(num1+":"+num2);
+function check(){
+  if(grecaptcha.getResponse().length==0){
+    alert('Please check textbox above to make sure you are not a robot.');
+    return false;
+  }
+  else
+    if($('#result').val()!=result){
+      alert(num1+operation+num2+' is not = '+$('#result').val());
+      return false;
+    }
+    return true;
+  }
 </script>
+
 <style type="text/css">
     .container div div img{
         width:100% !important;

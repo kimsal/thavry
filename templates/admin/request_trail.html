@@ -64,13 +64,13 @@
 			                    	{% for page in range(1,pagin+1) %}
 				                    	{% if page == current_pagin %}
 				                    		<li class="active">
-				                    			<a href="/admin/{{page}}">
+				                    			<a href="/admin/request-trail/{{page}}">
 				                    				{{page}}
 				                    			</a>
 				                    		</li>
 				                    	{%else%}
 				                    		<li>
-				                    			<a href="/admin/{{page}}">
+				                    			<a href="/admin/request-trail/{{page}}">
 				                    				{{page}}
 				                    			</a>
 				                    		</li>
@@ -79,16 +79,16 @@
 								</ul>
 							{%else %}
 								<li class="{%if current_pagin==1 %}active{%endif%}">
-									<a href="/admin/1">1</a>
+									<a href="/admin/request-trail/1">1</a>
 								</li>
 								<li class="{%if current_pagin==2 %}active{%endif%}">
-									<a href="/admin/2">2</a>
+									<a href="/admin/request-trail/2">2</a>
 								</li>
 								<li class="{%if current_pagin==3 %}active{%endif%}">
-									<a href="/admin/3">3</a>
+									<a href="/admin/request-trail/3">3</a>
 								</li>
 								<li class="{%if current_pagin==4 %}active{%endif%}">
-									<a href="/admin/4">4</a>
+									<a href="/admin/request-trail/4">4</a>
 								</li>
 								<li>
 									<a href="#">...</a>
@@ -96,13 +96,13 @@
 								{% for page in range(pagin-4,pagin+1) %}
 									{% if current_pagin == page%}
 								  <li class="active">
-								  	<a href="/admin/{{page}}">
+								  	<a href="/admin/request-trail/{{page}}">
 								  		{{page}}
 								  	</a>
 								  	</li>
 								 {%else%}
 								 	<li>
-								  	<a href="/admin/{{page}}">
+								  	<a href="/admin/request-trail/{{page}}">
 								  		{{page}}
 								  	</a>
 								  	</li>
