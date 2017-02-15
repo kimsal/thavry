@@ -173,6 +173,7 @@ function check(){
   // else
   if($('#result').val()==''){
     alert("Result can't be null.");
+    return false;
   }
   if(parseInt($('#result').val())!=result){
     alert(num1+operation+num2+' is not = '+$('#result').val()+". You'r smarter than that");
