@@ -7,7 +7,7 @@
         
         {%for post in posts%}
         <a href="/{{post.slug}}">
-            <div class="row" style="padding:10px; background-color:#fff; margin:5px">
+            <div class="row" style="padding:10px; background-color:#eee; margin:10px 5px; border-radius: 5px;">
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="padding:5px;">
                     <img src="{{post.feature_image}}" class="img-responsive">
                 </div> 
@@ -26,7 +26,7 @@
     </div>
     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="padding-top:10px; background-color:#fff; margin-top:5px;">
         <center><h5 class="h5blog-cate" >RECENT POSTS</h5></center>
-        <hr>
+        <hr class="hrRecentPost">
         <div style="padding:5px;">
         {%for post in latest_posts%}
             <a href="/{{post.slug}}">

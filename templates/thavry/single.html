@@ -6,14 +6,14 @@
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:15px; background-color:#fff;">
             <center><h5 class="sing-blog">{{post.title}}</h5></center>
-             <hr style="margin-top:2px; margin-bottom:15px;">
+             <hr class="hrSing">
             <p>
                {{post.description|safe}}
             </p>
             <br>
              {%set arr_image=post.images.split('$$$$$')%}
 
-                <script type="text/javascript">
+                <!-- <script type="text/javascript">
     $( document ).ready(function( $ ) {
         $( '#example2' ).sliderPro({
             width: 960,
@@ -46,7 +46,7 @@
                   {%endif%}
                 {%endfor%}
                 </div>
-            </div>
+            </div> -->
 
             <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" style="padding:0px;">   
               <div class="fb-comments" data-href="http://thavry.com/{{post.slug}}" data-numposts="15"></div>
@@ -58,7 +58,7 @@
     </div>
     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style=" background-color:#fff; padding:15px;">
     <center><h5 class="sing-blog">RECENT POSTS</h5> </center>
-    <hr>
+    <hr class="hrRecentPost">
         <div style="padding:5px;">
             {%for post in latest_posts%}
             <a href="/{{post.slug}}">

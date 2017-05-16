@@ -73,8 +73,9 @@ hr {
     font-size: 18px;
 }
 .name {
-	color: gray;
-    font-size:18px !important;
+	color: #27ae60;
+    font-size: 12px !important;
+    padding-right: 70px;
 }
 
 /*single*/
@@ -148,7 +149,7 @@ hr {
     padding-top: 10px;
 }
 .mypanel{
-    border-color: #27AE60;
+    border-color: #27ae60;
 }
 .socail{
     font-size: 25px;
@@ -179,9 +180,10 @@ nav.navbar.bootsnav {
     border: none;
     /* color: #fff; */
     z-index: 9;
+    height: 55px !important;
 }
 nav.navbar.bootsnav ul.nav > li > a {
-    padding: 30px 15px;
+    padding: 26px 15px;
     font-weight: 600;
     color: #fff;
     font-size: 14px;
@@ -190,7 +192,7 @@ li a{
     font-family: 'Nova Flat', cursive;
 }
 nav.navbar.bootsnav ul.nav > li > a:hover {
-    padding: 30px 15px;
+    padding: 26px 15px;
     font-weight: 600;
     color: #92F22A;
 }
@@ -202,6 +204,10 @@ nav.navbar.bootsnav ul.nav > li > a:hover {
 }
 nav.navbar li.dropdown ul.dropdown-menu {
     border-top-color: #27ae60 !important;
+}
+
+.dropdown-menu{
+    top: 90% !important;
 }
 a:hover{
     text-decoration: none;
@@ -315,7 +321,7 @@ h5 a:hover{
 }
 
 .popular{
-    background-color:#27AE60;
+    background-color:#27ae60;
     padding: 10px;
     text-align: center;
 }
@@ -339,7 +345,7 @@ h5 a:hover{
 
 /*footer*/
 footer {
-	height: 150px;
+	height: 160px;
 	width: 100%;
 	background-color: #27ae60;
 }
@@ -535,11 +541,14 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 /*blog category*/
 .h5blog-cate{
     color: #27ae60;
+    padding: 15px 0px;
+    font-size: 15px;
 }
 
 /*blog-category*/
 .sing-blog{
     color: #27ae60;
+    font-weight: bold;
 }
 /*search*/
 
@@ -549,30 +558,45 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 .box-panel{
     padding: 15px;
 }
+.box{
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.12);
+}
 .form1{
     height: 40px;
     margin-top: 10px;
 }
 .review{
-    padding: 15px;
+    padding: 20px 70px 0px 70px;
 }
 .name{
     text-align: -webkit-right;
 }
-.btn-width{
+.btn-width {
     background-color: #27ae60;
-    width:100%;
-    padding: 15px 10px;
-    border: 0px;
+    width: 100%;
+    padding: 10px 0px;
+    font-weight: bold;
+    text-transform: uppercase;
     color: #fff;
-    border-radius: 0px;
+    border-radius: 20px;
+    border-radius: 40px;
+    border: 1px solid #fff;
 }
 .btn-width:hover{
     background-color: #27ae60;
-    width:100%;
-    padding: 15px 10px;
+    width: 100%;
+    padding: 10px 0px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 20px;
+    border-radius: 40px;
+    border: 1px solid transition;
     transition: 0.5s;
-
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.12);
 }
 .btn-sub{
     background-color: #27ae60;
@@ -589,4 +613,57 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
     border: 0px;
     border-radius: 0px;
     transition: 0.5s;
+}
+
+.youtube{
+    width: 100%;
+    height: 315px;
+}
+.recentPost{
+    font-weight: bold;
+    font-size: 22px;
+    color: #27ae60;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+
+}
+.hrPost{
+    border: 1px solid #27ae60;
+    width: 10%;
+    margin-top: -5px;
+}
+.backPost{
+    background-color: #eee;
+    border-radius: 5px;
+    border:1px;
+}
+.textPost{
+    color: #545454;  
+    padding-bottom: 15px; 
+}
+.hrSing{
+    border: 1px solid #27ae60;
+    width: 30%;
+    margin-top: -5px;
+}
+.hrPage{
+    border: 1px solid #27ae60;
+    width: 10%;
+    margin-top: -5px;
+}
+.hrRecentPost{
+    border: 1px solid #27ae60;
+    width: 30%;
+    margin-top: -5px;
+}
+a p:hover{
+    color: #27ae60;
+    transition: 0.5s;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #27ae60;
+    border-color: #27ae60;
 }

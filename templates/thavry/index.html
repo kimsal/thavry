@@ -9,68 +9,35 @@
         </div>
          
         <div class="row" style="margin-top:15px;">
-            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 ">
+            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 ">
                 <img src="/static/{{template_name}}/imgs/front-cover.jpg" class="img-responsive">
             </div>
 
-            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 ">
-                <div class="box-panel panel panel-default "> 
-                    <h4 class="title">GET THREE FREE CHAPTERS TO KICKSTART A PROPER WOMAN</h4>
-                    <p>Enter your email below and we'll send it to your inbox right away:</p>
-                    <form action="/request-trail/add/" method="POST"  enctype="multipart/form-data">
-                    <div class="col-xs-12 col-sm-12 col-md-12" style="margin:10px 0px;padding:0px;">
-                        {% with messages = get_flashed_messages() %}
-                            {% if messages %}
-                              {% for message in messages %}
-                                <div class="alert alert-success"> 
-                                  {{ message }}
-                                </div>
-                              {% endfor %}
-                            {% endif %}
-                        {% endwith %}
-                      </div>
-                      <div class="form-group">
-                            <input type="text" class="form-control form1" id="name" placeholder="Name" name="name" required="">
-                      </div>
-                      <div class="form-group">
-                            <input type="email" class="form-control form1" id="email" placeholder="Email Address" name="email"  required="">
-                      </div>
-                       <div class="form-group">
-                            <textarea  class="form-control form1" id="description" placeholder="Comment" name="comment"  required=""></textarea>
-                      </div>
-                      <div class="form-group">
-                        What is the result of 
-                            <b class="num1"></b> <b class="operation"></b> <b class="num2"></b>
-                            <input type="text" class="form-control form1" id="result" placeholder="Result" name="result"  required="">
-                      </div>
-                     <!--  <div class="col-xs-12 col-sm-6">
-                         <div class="g-recaptcha" data-sitekey="6LfFtxEUAAAAAGBm3omMfCFFD2b_7qD9QdxiTj3w"></div>
-                          </div> -->
-           <br/>
-                      <center><button type="submit" class="btn btn-default btn-sub " style="width:50%; padding:10px;" onclick="return check();">Submit</button></center>
-                    </form>
-                </div>
+            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 ">
+                    <iframe src="https://www.youtube.com/embed/IUEdmjlZkho" frameborder="0" allowfullscreen class="youtube"></iframe>
+                  <br/>
+                  <br>
                   <a href="/traveling-tips/">
                     <img src="/static/{{template_name}}/imgs/thavry-journey-blog-v1.png" class="img-responsive">
                   </a>
             </div>
         </div>
         <div class="row" style="margin-top:15px;">
-            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" style="padding-right: 5px ">
                 <a href="/#reviews"><button class="btn btn-default btn-width">Reviews</button></a>
             </div>
-            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" style="padding-right: 5px ">
                 <a href="/a-proper-woman/the-4th-publishing-a-proper-woman/"><button class="btn btn-default btn-width">The Book</button></a>
             </div>
             
-            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" style="padding-right: 5px ">
                 <a href="/a-proper-woman/editor"><button class="btn btn-default btn-width">Editor</button></a>
             </div>
            
-            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" style="padding-right: 5px ">
                 <a href="/a-proper-woman-chapters" target="_blank"><button class="order btn btn-default btn-width" id="">Chapters</button></a>
             </div>
-             <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
+             <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" style="padding-right: 5px ">
                 <a href="https://www.amazon.com/dp/1542493625" target="_blank"><button class="order btn btn-default btn-width" id="">
                   Paperback
                 </button></a>
@@ -141,28 +108,31 @@
             </div>
 
              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0px;">
-                <h3>
+                <h3 class="recentPost">
                   <center>Recent Posts</center>
+                  <hr class="hrPost">
                 </h3>
              </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0px;">
         
         {%for post in posts_top%}
         <a href="/{{post.slug}}">
-            <div class="col-xs-12 col-sm-4" style=" background-color:#fff; ">
-                <div class="col-xs-12 col-sm-12" style="padding:5px;">
+            <div class="col-xs-12 col-sm-4">
+            <div class="backPost">
+                <div class="row" style="padding:0px 15px; margin-top: 0px;">
                     <img src="{{post.feature_image}}" class="img-responsive">
                 </div> 
-                <div class="col-xs-12 col-sm-12" style="padding:5px;">
+                <div class="row" style="padding:5px 30px;">
                     <a href="/{{post.slug
                     }}"><h5 class="h5blog-cate">
                     {{post.title}}
                     </h5></a>
-                    <p>
+                    <p class="textPost">
                     {{post.description|striptags|truncate(200)}}
                     </p>
                 </div>
             </div>
+          </div>
         </a>
         {%endfor%}
     </div>
@@ -182,161 +152,4 @@
 
 
 <!--end content-->
-<div class="col-xs-12" style="height:20px;"></div>
-<footer>
-    <div class="container">
-        <div class="hidden-xs col-sm-4 col-md-4">
-            
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-4">
-            <span>
-                <center>
-                    <img src="/static/{{template_name}}/imgs/logo.png" class="logo-footer img-responsive">
-                </center>
-            </span>
-            <center>
-                <label><span><b>Creared by </b></span><a href="http://www.amoogli.com" target="blank"><span class="partner">Amoogli</span></a></label><br>
-                <a href="http://smallworldcambodia.com/"><span class="partner1">SMALLWORLD</span></a> | <a href="http://recycles.org/"><span class="partner1">RECYCLES.ORG</span></a>
-            </center>
-        </div>
-        <div class="hidden-xs col-sm-4 col-md-4">
-            
-        </div>
-    </div>
-</footer>
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">×</span>
-      <h4><b>A Proper Woman</b></h4>
-    </div>
-    <div class="modal-body madal-body1" style=" margin-top:10px;">
-    <p class="payment" style="margin-left:12px">
-        <b>If you wish to purchase the hard copy, we deliver within Cambodia. <br> <br> Please fill out your information below We will contact you by Email or Phone:</b>
-    </p>
-    <form action="/add/booking/" method="post">
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <label for="">First Name:</label>
-            <input type="text" class="form-control" id="firstname" placeholder="Input Your First Name*" required="" name="firstname">
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <label for="">Last Name:</label>
-            <input type="text" class="form-control" id="lastname" placeholder="Input Your Last Name*" required="" name="lastname">
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <label for="">Email:</label>
-          <input type="email" class="form-control" name="email" id="email" placeholder="Input Your Email*"  required="">
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top:8px;">
-            <label for="">Phone Number:</label>
-          <input type="text" class="form-control" id="phone" placeholder="Input Your phone*"  required="" name="phone">
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top:8px;">
-            <label for="">Amount :</label>
-            <select class="form-control" id="amount" name="amount">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-            </select>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top:8px;">
-            <label for="email">Comment:</label>
-          <textarea type="text" class="form-control" id="description" placeholder="Write any comment here " name="description" required="" rows="2"></textarea>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top:8px;">
-          <!-- <div class="g-recaptcha" data-sitekey="6LevDREUAAAAAK17Sp2S079Jw6eukB5DfO9lR114"></div> -->
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top:8px;">
-           <center>
-           <br/>
-                <input type="submit" value="Send" class="btn btn-primary" style="width:100px;">
-            </center>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:20px;">
-      </div>
-    </div>
-  </div>
-  </form>
-
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal
-// btn.onclick = function() {
-//     modal.style.display = "block";
-// }
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-
-var num1=Math.floor(Math.random() * 9) + 1  ;
-var num2=Math.floor(Math.random() * 9) + 1  ;
-var arr_operation=['+','-','*'];
-var operation=arr_operation[Math.floor(Math.random() * 3) + 0]
-$('.num1').html(num1);  
-$('.num2').html(num2);
-$('.operation').html(operation);
-if(operation=='+')
-  var result=parseInt(num1+num2);
-else if(operation=='-')
-    var result=parseInt(num1-num2);
-else if(operation=='*')
-    var result=parseInt(num1*num2);
-// alert(num1+":"+num2);
-function check(){
-  // if(grecaptcha.getResponse().length==0){
-  //   alert('Please check textbox above to make sure you are not a robot.');
-  //   return false;
-  // }
-  // else
-  if($('#result').val()==''){
-    alert("Result can't be null.");
-    return false;
-  }
-  if(parseInt($('#result').val())!=result){
-    alert(num1+operation+num2+' is not = '+$('#result').val()+". You'r smarter than that");
-    return false;
-  }
-  else{
-    return true;
-  }
-}
-</script>
-
-<style type="text/css">
-    .container div div img{
-        width:100% !important;
-    }
-</style>
-</body>
-</html>
+{% include template_name+'/footer.html' %} 
